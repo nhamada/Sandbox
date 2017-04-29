@@ -16,6 +16,7 @@
 
 import UIKit
 
+@IBDesignable
 final public class ScrollableImageView: UIScrollView {
     
     fileprivate let imageView: UIImageView = UIImageView()
@@ -32,6 +33,12 @@ final public class ScrollableImageView: UIScrollView {
     }
     
     private var imageViewConstraint: (top: NSLayoutConstraint, bottom: NSLayoutConstraint, left: NSLayoutConstraint, right: NSLayoutConstraint)! = nil
+    
+    @IBInspectable
+    public var allowZoomByDoubleTap: Bool = true
+    
+    private let zoomScaleSteps: [CGFloat] = [1.0, 2.0, 4.0, 8.0]
+    private var normalizedZoomScaleSteps: [CGFloat] = []
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -77,9 +84,11 @@ final public class ScrollableImageView: UIScrollView {
         let widthScale = bounds.width / image.size.width
         let heightScale = bounds.height / image.size.height
         let minScale = min(widthScale, heightScale)
-        minimumZoomScale = minScale
-        maximumZoomScale = minScale * 4
+        minimumZoomScale = minScale * zoomScaleSteps.first!
+        maximumZoomScale = minScale * zoomScaleSteps.last!
         zoomScale = minScale
+        
+        normalizedZoomScaleSteps = zoomScaleSteps.map { $0 * minScale }
     }
     
     // MARK:- ImageViewのAutoLayout制約の更新処理
@@ -133,11 +142,22 @@ final public class ScrollableImageView: UIScrollView {
     }
     
     private func onDoubleTapped() {
-        let newZoomScale = zoomScale < maximumZoomScale ? maximumZoomScale : minimumZoomScale
+        guard allowZoomByDoubleTap else {
+            return
+        }
+        let newZoomScale = nextZoomScale()
         // zoom(to:animated:) は viewForZooming(in:) が返すViewの座標空間なので、タップされた位置を変換してからrectを計算する
         let location = convert(tapLocation, to: imageView)
         let zoomRect = calculateZoomRect(for: newZoomScale, with: location)
         zoom(to: zoomRect, animated: true)
+    }
+    
+    private func nextZoomScale() -> CGFloat {
+        if let newZoomScale = normalizedZoomScaleSteps.first(where: { zoomScale < $0 } ) {
+            return newZoomScale
+        } else {
+            return normalizedZoomScaleSteps.first!
+        }
     }
     
     private func calculateZoomRect(for zoomScale: CGFloat, with center: CGPoint) -> CGRect {
