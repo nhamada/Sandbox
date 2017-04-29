@@ -65,11 +65,14 @@ final public class ScrollableImageView: UIScrollView {
         delegate = self
     }
     
+    // MARK:- ImageViewに画像をセットした後に、最小と最大のズーム倍率の更新処理
     private func updateScale() {
         guard let image = imageView.image else {
             fatalError("`updateScale` must be called after image is given.")
         }
         
+        // 画像とself.boundsとの比率から最小の比率をとる
+        // aspectFit的に見せるため
         let widthScale = bounds.width / image.size.width
         let heightScale = bounds.height / image.size.height
         let minScale = min(widthScale, heightScale)
@@ -78,6 +81,7 @@ final public class ScrollableImageView: UIScrollView {
         zoomScale = minScale
     }
     
+    // MARK:- ImageViewのAutoLayout制約の更新処理
     fileprivate func updateConstraints(with size: CGSize) {
         let offset: (x: CGFloat, y: CGFloat) = (frameOriginOffsetForX(size.width),
                                                 frameOriginOffsetForY(size.height))
