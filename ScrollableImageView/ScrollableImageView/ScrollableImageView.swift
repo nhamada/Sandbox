@@ -10,6 +10,7 @@
  * 参考
  * https://www.raywenderlich.com/122139/uiscrollview-tutorial
  * http://qiita.com/shift_option_k/items/eea52a662ae64258fb6f
+ * https://developer.apple.com/library/content/documentation/WindowsViews/Conceptual/UIScrollView_pg/ZoomingByTouch/ZoomingByTouch.html
  */
 
 
@@ -105,6 +106,47 @@ final public class ScrollableImageView: UIScrollView {
             fatalError("Image is nil.")
         }
         return max(0, (targetHeight - image.size.height * zoomScale) / 2)
+    }
+    
+    // MARK:- タップ
+    private var tapLocation: CGPoint = CGPoint.zero
+    override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else {
+            fatalError()
+        }
+        
+        tapLocation = touch.location(in: self)
+        NSLog("Tapped@\(tapLocation)")
+        
+        switch touch.tapCount {
+        case 1:
+            perform(#selector(onSingleTapped), with: nil, afterDelay: 0.25)
+        case 2:
+            NSObject.cancelPreviousPerformRequests(withTarget: self)
+            onDoubleTapped()
+        default:
+            return
+        }
+    }
+    
+    @objc private func onSingleTapped() {
+        // TODO: シングルタップの処理
+    }
+    
+    private func onDoubleTapped() {
+        let newZoomScale = zoomScale < maximumZoomScale ? maximumZoomScale : minimumZoomScale
+        // zoom(to:animated:) は viewForZooming(in:) が返すViewの座標空間なので、タップされた位置を変換してからrectを計算する
+        let location = convert(tapLocation, to: imageView)
+        let zoomRect = calculateZoomRect(for: newZoomScale, with: location)
+        zoom(to: zoomRect, animated: true)
+    }
+    
+    private func calculateZoomRect(for zoomScale: CGFloat, with center: CGPoint) -> CGRect {
+        let width = frame.size.width / zoomScale
+        let height = frame.size.height / zoomScale
+        let x = center.x - width / 2
+        let y = center.y - height / 2
+        return CGRect(x: x, y: y, width: width, height: height)
     }
 }
 
