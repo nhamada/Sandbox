@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		3587B5B11E4741EC00F52B87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3587B5B01E4741EC00F52B87 /* AppDelegate.swift */; };
-		3587B5B31E4741EC00F52B87 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3587B5B21E4741EC00F52B87 /* ViewController.swift */; };
 		3587B5B61E4741EC00F52B87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3587B5B41E4741EC00F52B87 /* Main.storyboard */; };
 		3587B5B81E4741EC00F52B87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3587B5B71E4741EC00F52B87 /* Assets.xcassets */; };
 		3587B5BB1E4741EC00F52B87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3587B5B91E4741EC00F52B87 /* LaunchScreen.storyboard */; };
 		3587B5C61E4741EC00F52B87 /* CALayerDrawingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3587B5C51E4741EC00F52B87 /* CALayerDrawingTests.swift */; };
 		3587B5D11E4741EC00F52B87 /* CALayerDrawingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3587B5D01E4741EC00F52B87 /* CALayerDrawingUITests.swift */; };
+		3587B5DF1E4742FC00F52B87 /* SimpleDrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3587B5DE1E4742FC00F52B87 /* SimpleDrawViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +36,6 @@
 /* Begin PBXFileReference section */
 		3587B5AD1E4741EC00F52B87 /* CALayerDrawing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CALayerDrawing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3587B5B01E4741EC00F52B87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3587B5B21E4741EC00F52B87 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3587B5B51E4741EC00F52B87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3587B5B71E4741EC00F52B87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3587B5BA1E4741EC00F52B87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +46,7 @@
 		3587B5CC1E4741EC00F52B87 /* CALayerDrawingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CALayerDrawingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3587B5D01E4741EC00F52B87 /* CALayerDrawingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerDrawingUITests.swift; sourceTree = "<group>"; };
 		3587B5D21E4741EC00F52B87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3587B5DE1E4742FC00F52B87 /* SimpleDrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleDrawViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +98,8 @@
 			isa = PBXGroup;
 			children = (
 				3587B5B01E4741EC00F52B87 /* AppDelegate.swift */,
-				3587B5B21E4741EC00F52B87 /* ViewController.swift */,
 				3587B5B41E4741EC00F52B87 /* Main.storyboard */,
+				3587B5DE1E4742FC00F52B87 /* SimpleDrawViewController.swift */,
 				3587B5B71E4741EC00F52B87 /* Assets.xcassets */,
 				3587B5B91E4741EC00F52B87 /* LaunchScreen.storyboard */,
 				3587B5BC1E4741EC00F52B87 /* Info.plist */,
@@ -259,7 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3587B5B31E4741EC00F52B87 /* ViewController.swift in Sources */,
+				3587B5DF1E4742FC00F52B87 /* SimpleDrawViewController.swift in Sources */,
 				3587B5B11E4741EC00F52B87 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
