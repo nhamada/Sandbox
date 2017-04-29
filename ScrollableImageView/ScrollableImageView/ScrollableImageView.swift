@@ -115,13 +115,12 @@ final public class ScrollableImageView: UIScrollView {
             fatalError()
         }
         
-        tapLocation = touch.location(in: self)
-        NSLog("Tapped@\(tapLocation)")
-        
         switch touch.tapCount {
         case 1:
+            tapLocation = touch.location(in: self)
             perform(#selector(onSingleTapped), with: nil, afterDelay: 0.25)
         case 2:
+            tapLocation = touch.location(in: self)
             NSObject.cancelPreviousPerformRequests(withTarget: self)
             onDoubleTapped()
         default:
