@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0aL-ep-0cW">
-                                <rect key="frame" x="0.0" y="28" width="375" height="267"/>
+                                <rect key="frame" x="20" y="28" width="335" height="267"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -31,12 +31,15 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="0aL-ep-0cW" secondAttribute="trailing" id="0Ir-gU-U03"/>
+                            <constraint firstAttribute="trailing" secondItem="0aL-ep-0cW" secondAttribute="trailing" constant="20" symbolic="YES" id="0Ir-gU-U03"/>
                             <constraint firstItem="0aL-ep-0cW" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.4" id="2Dt-3w-YZW"/>
-                            <constraint firstItem="0aL-ep-0cW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gTX-uq-yu5"/>
+                            <constraint firstItem="0aL-ep-0cW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="gTX-uq-yu5"/>
                             <constraint firstItem="0aL-ep-0cW" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="rPh-e8-L0S"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textView" destination="0aL-ep-0cW" id="FoA-08-unv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
